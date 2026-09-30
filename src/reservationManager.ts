@@ -1,6 +1,4 @@
 import { findFreeSlots } from './availability';
-import { DEFAULT_CACHE_CONFIG } from './cache/cacheConfig';
-import { QueryCache } from './cache/queryCache';
 import type { NotificationChannel } from './notifications/channel';
 import { createNotificationChannel, DEFAULT_NOTIFIER_CONFIG } from './notifications/notifierFactory';
 import { InMemoryStorageProvider } from './storage/inMemoryStorageProvider';
@@ -30,7 +28,6 @@ export class BookingError extends Error {
 export class ReservationManager {
   private readonly storage: StorageProvider;
   private readonly notifier: NotificationChannel;
-  private readonly cache: QueryCache;
   private readonly rooms = new Map<string, Room>();
   private readonly notificationLog: string[] = [];
   private nextBookingNumber = 1;
@@ -38,7 +35,6 @@ export class ReservationManager {
   constructor(storage: StorageProvider = new InMemoryStorageProvider()) {
     this.storage = storage;
     this.notifier = createNotificationChannel(DEFAULT_NOTIFIER_CONFIG);
-    this.cache = new QueryCache(DEFAULT_CACHE_CONFIG);
   }
 
   registerRoom(room: Room): void {
@@ -115,11 +111,6 @@ export class ReservationManager {
   }
 
   listBookingsForRoom(roomId: string): Booking[] {
-    const cacheKey = `bookings:${roomId}`;
-    const cached = this.cache.get<Booking[]>(cacheKey);
-    if (cached !== undefined) {
-      return cached;
-    }
     return this.storage.findByRoom(roomId);
   }
 

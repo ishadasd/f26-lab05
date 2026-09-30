@@ -1,0 +1,16 @@
+
+> reservation-service@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 C:/Users/28547/Documents/Codex/2026-09-10/her/work/f26-lab05
+
+ ✓ tests/reporting.test.ts (7 tests) 6ms
+ ✓ tests/validation.test.ts (17 tests) 6ms
+ ✓ tests/booking.test.ts (15 tests) 9ms
+
+ Test Files  3 passed (3)
+      Tests  39 passed (39)
+   Start at  06:19:20
+   Duration  1.67s (transform 371ms, setup 0ms, collect 608ms, tests 21ms, environment 1ms, prepare 412ms)
+

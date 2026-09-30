@@ -36,3 +36,7 @@ and `npm test`, once you enable workflows on your fork from the Actions tab.
 - Setup: `SETUP.md`
 
 See the Lab 5 handout on the course page for the three milestones you show a TA.
+
+## Agent assistance
+Tool: OpenAI Codex; model: gpt-6-astra (as recorded in the Codex session). Used for code review, the scoped cache removal, verification, and explanation preparation. No agent transcripts are published in this public lab fork.
+
